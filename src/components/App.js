@@ -28,7 +28,7 @@ class App extends React.Component {
       <div className="container">
         <Header tagline="Here are all the next tasks." />
         <ToDoForm addToDo={this.addToDo} />
-        <ToDoList />
+        <ToDoList items={this.state.toDoItems} />
       </div>
     );
   }
