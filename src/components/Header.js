@@ -6,7 +6,7 @@ class Header extends React.Component {
       <header className="header">
         {/* an example to comment in react */}
         <h1>What to do?</h1>
-        <span className="tagline">This could be our bucket list</span>
+        <span className="tagline">{this.props.tagline}</span>
       </header>
     );
   }
