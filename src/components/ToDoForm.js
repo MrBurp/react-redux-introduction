@@ -1,13 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+import { addToDo } from "../actions/index";
 
 class ToDoForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    {
-      /* Leandro comented up here can be do by another way */
-    }
-  }
   textInput = React.createRef();
 
   handleSubmit = e => {
@@ -15,13 +10,14 @@ class ToDoForm extends React.Component {
     const text = this.textInput.current.value.trim();
     this.props.addToDo(text);
     e.currentTarget.reset();
-    // console.log(`Create new item: ${this.textInput.current.value}`);
   };
+
   render() {
     return (
       <form className="input-group my-3" onSubmit={this.handleSubmit}>
         <input
           className="form-control"
+          name="name"
           type="text"
           placeholder="Add a new to-do item ..."
           ref={this.textInput}
@@ -37,4 +33,9 @@ class ToDoForm extends React.Component {
   }
 }
 
-export default ToDoForm;
+export default connect(
+  state => ({}),
+  {
+    addToDo
+  }
+)(ToDoForm);

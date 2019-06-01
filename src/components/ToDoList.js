@@ -1,5 +1,6 @@
 import React from "react";
 import ToDoItem from "./ToDoItem";
+import { connect } from "react-redux";
 
 class ToDoList extends React.Component {
   filteredItems = () => {
@@ -24,19 +25,17 @@ class ToDoList extends React.Component {
       <div className="todo-list">
         <table className="todo-items table table-borderless">
           <tbody>
-            {this.filteredItems().map(item => (
-              <ToDoItem
-                key={`todo-item-${item.uuid}`}
-                data={item}
-                updateToDoText={this.props.updateToDoText}
-                toggleToDoDone={this.props.toggleToDoDone}
-                removeToDo={this.props.removeToDo}
-              />
-            ))}
+            {this.filteredItems().map(item => {
+              return <ToDoItem key={`todo-item-${item.uuid}`} data={item} />;
+            })}
           </tbody>
         </table>
       </div>
     );
   }
 }
-export default ToDoList;
+
+export default connect(state => ({
+  items: state.toDoItems,
+  filter: state.filter
+}))(ToDoList);

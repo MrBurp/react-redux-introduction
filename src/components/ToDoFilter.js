@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { filters, setFilter } from "../actions/index";
 
 class ToDoFilter extends React.Component {
-  filters = ["all", "undone", "done"];
-
   render() {
     return (
       <div className="todo-filters text-right">
